@@ -23,9 +23,18 @@ An advanced spaced repetition system for Obsidian that helps you efficiently rev
 4. Install and enable the plugin
 
 ### Manual Installation
-1. Download the latest release from the [GitHub releases page](https://github.com/eduardo-emanuel-gutierrez/spaced-repetition-pro/releases)
-2. Extract the files to your vault's `.obsidian/plugins/spaced-repetition-pro/` directory
-3. Reload Obsidian and enable the plugin in Settings > Community Plugins
+1. Download the following files from the [GitHub releases page](https://github.com/eduardo-emanuel-gutierrez/spaced-repetition-pro/releases)
+   - main.js
+   - manifest.json
+   - styles.css (if available)
+2. Create a new folder inside your Obsidian vault at:
+```
+<your-vault>/.obsidian/plugins/spaced-repetition-pro/
+```
+
+3. Copy the downloaded files into that folder.
+4. Restart Obsidian and enable the plugin in Settings → Community plugins.
+
 
 ## Quick Start Guide
 
