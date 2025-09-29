@@ -1,0 +1,447 @@
+/* Estilos principales para Spaced Repetition Pro */
+
+/* Vista de Filtros */
+.sr-filter-view {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.sr-filter-view h2 {
+    margin-bottom: 20px;
+    color: var(--text-title-h2);
+}
+
+.sr-filter-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.sr-filter-controls .dropdown {
+    min-width: 150px;
+}
+
+.sr-current-filters {
+    background: var(--background-secondary);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.sr-current-filters h3 {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.sr-filter-item {
+    padding: 5px 0;
+    color: var(--text-normal);
+}
+
+.sr-stats {
+    display: flex;
+    gap: 30px;
+    margin: 20px 0;
+    padding: 15px;
+    background: var(--background-secondary);
+    border-radius: 5px;
+}
+
+.sr-stats p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.sr-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.sr-no-properties {
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Vista de Pregunta */
+.sr-question-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 40px;
+    text-align: center;
+}
+
+.sr-question-title {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: var(--text-title-h1);
+}
+
+.sr-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.sr-progress {
+    margin-top: auto;
+    padding-top: 30px;
+}
+
+.sr-progress-text {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* Vista de Respuesta */
+.sr-answer-view {
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sr-answer-title {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--background-modifier-border);
+    color: var(--text-title-h1);
+}
+
+.sr-content {
+    margin-bottom: 40px;
+    line-height: 1.6;
+    color: var(--text-normal);
+}
+
+.sr-content p {
+    margin-bottom: 1em;
+}
+
+.sr-content h1,
+.sr-content h2,
+.sr-content h3,
+.sr-content h4,
+.sr-content h5,
+.sr-content h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.sr-content ul,
+.sr-content ol {
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+.sr-content blockquote {
+    border-left: 3px solid var(--quote-opening-modifier);
+    padding-left: 1em;
+    margin: 1em 0;
+    color: var(--text-muted);
+}
+
+.sr-content code {
+    background: var(--code-background);
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: var(--font-monospace);
+}
+
+.sr-content pre {
+    background: var(--code-background);
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1em 0;
+}
+
+/* Botones de Calificación */
+.sr-rating-buttons {
+    background: var(--background-secondary);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.sr-rating-buttons h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+.sr-buttons-row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Colores específicos para cada botón de calificación */
+.sr-rating-again {
+    background-color: var(--background-modifier-error) !important;
+}
+
+.sr-rating-again:hover {
+    background-color: var(--background-modifier-error-hover) !important;
+}
+
+.sr-rating-hard {
+    background-color: var(--interactive-accent) !important;
+    opacity: 0.8;
+}
+
+.sr-rating-hard:hover {
+    opacity: 1;
+}
+
+.sr-rating-good {
+    background-color: var(--interactive-accent) !important;
+}
+
+.sr-rating-easy {
+    background-color: var(--interactive-success) !important;
+}
+
+.sr-rating-easy:hover {
+    background-color: var(--interactive-success) !important;
+    filter: brightness(1.1);
+}
+
+/* Vista Vacía */
+.sr-empty-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 40px;
+    text-align: center;
+}
+
+.sr-empty-icon {
+    font-size: 64px;
+    color: var(--text-faint);
+    margin-bottom: 20px;
+}
+
+.sr-empty-view h2 {
+    color: var(--text-title-h2);
+    margin-bottom: 10px;
+}
+
+.sr-empty-view p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+/* Configuración del Plugin */
+.sr-stats-container {
+    background: var(--background-secondary);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.sr-shortcuts-info {
+    background: var(--background-secondary);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.sr-shortcuts-info ul {
+    margin-left: 20px;
+    color: var(--text-normal);
+}
+
+.sr-shortcuts-info li {
+    margin: 5px 0;
+}
+
+.sr-about {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.sr-about a {
+    color: var(--text-accent);
+}
+
+.sr-about a:hover {
+    color: var(--text-accent-hover);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sr-question-view,
+.sr-answer-view,
+.sr-empty-view,
+.sr-filter-view {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Modo oscuro - ajustes adicionales */
+.theme-dark .sr-rating-again {
+    color: var(--text-on-accent);
+}
+
+.theme-dark .sr-rating-hard {
+    color: var(--text-on-accent);
+}
+
+.theme-dark .sr-rating-good {
+    color: var(--text-on-accent);
+}
+
+.theme-dark .sr-rating-easy {
+    color: var(--text-on-accent);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .sr-filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sr-filter-controls .dropdown {
+        width: 100%;
+    }
+
+    .sr-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .sr-buttons-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sr-question-title {
+        font-size: 1.8em;
+    }
+}
+
+/* Estilos para la nueva UI de filtros */
+.sr-filter-connector {
+    min-width: 80px;
+}
+
+.sr-remove-filter {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-right: 5px;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.sr-remove-filter:hover {
+    background: var(--background-modifier-error);
+    color: var(--text-on-accent);
+}
+
+/* Mejora visual para errores en configuración */
+.setting-item .text-input.invalid {
+    border-color: var(--background-modifier-error) !important;
+}
+
+/* Mejor visualización de filtros actuales */
+.sr-current-filters {
+    background: var(--background-secondary);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--interactive-accent);
+}
+
+/* Mejoras para la UI de filtros */
+.sr-filter-connector-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sr-connector-label {
+    color: var(--text-muted);
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.sr-filter-connector-text {
+    color: var(--text-accent);
+    font-weight: bold;
+}
+
+.sr-filter-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.sr-filter-item:last-child {
+    border-bottom: none;
+}
+
+.sr-remove-filter {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.sr-remove-filter:hover {
+    background: var(--background-modifier-error);
+    color: var(--text-on-accent);
+}
+
+/* Para el ejemplo específico de arrays */
+.sr-array-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.sr-array-value {
+    background: var(--background-primary-alt);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.sr-remaining-cards {
+    color: var(--text-accent);
+    font-style: italic;
+}
+
+.sr-warning-text {
+    font-size: 0.9em;
+    font-style: italic;
+}
