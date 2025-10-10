@@ -362,11 +362,6 @@
     color: var(--text-on-accent);
 }
 
-/* Mejora visual para errores en configuración */
-.setting-item .text-input.invalid {
-    border-color: var(--background-modifier-error) !important;
-}
-
 /* Mejor visualización de filtros actuales */
 .sr-current-filters {
     background: var(--background-secondary);
@@ -444,4 +439,27 @@
 .sr-warning-text {
     font-size: 0.9em;
     font-style: italic;
+}
+
+/* Nuevas clases para reemplazar estilos inline */
+.sr-limit-error {
+    color: var(--text-error);
+    font-weight: bold;
+}
+
+.sr-limit-warning {
+    color: var(--text-warning);
+}
+
+.sr-new-cards-warning {
+    color: var(--text-warning);
+}
+
+.sr-input-error {
+    border-color: var(--background-modifier-error) !important;
+}
+
+.sr-shortcut-hint {
+    margin-top: 20px;
+    opacity: 0.7;
 }

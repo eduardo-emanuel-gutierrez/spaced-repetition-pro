@@ -59,7 +59,7 @@ export class SpacedRepetitionView extends ItemView {
     }
 
     private async renderView() {
-        const container = this.containerEl.children[1];
+        const container = this.containerEl.children[1] as HTMLElement;
         container.empty();
 
         switch (this.currentState) {
