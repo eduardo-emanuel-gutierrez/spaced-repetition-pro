@@ -4,6 +4,10 @@
 
 An advanced spaced repetition system for Obsidian that helps you efficiently review and memorize your notes using the proven SM-2 algorithm. Transform your knowledge base into an active learning system.
 
+## Screenshot
+
+![Spaced Repetition Plugin running](images/plugin-running.png)
+
 ## Features
 
 - **SM-2 Algorithm**: Uses the SuperMemo 2 algorithm for optimal review scheduling
