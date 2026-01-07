@@ -3,11 +3,12 @@ import {
     WorkspaceLeaf,
     TFile,
     MarkdownRenderer,
-    Component,
+    // Component, // Ya no se necesita importar explícitamente para instanciarlo
     setIcon,
     ButtonComponent,
     DropdownComponent,
-    Notice
+    Notice,
+    Scope // Importado Scope
 } from 'obsidian';
 import SpacedRepetitionPlugin from '../main';
 import { ReviewItem } from './sr-manager';
@@ -30,12 +31,35 @@ export class SpacedRepetitionView extends ItemView {
     reviewQueue: ReviewItem[] = [];
     currentReviewIndex: number = 0;
     currentFilters: Filter[] = [];
-    component: Component;
+    // Eliminado: component: Component; // ItemView ya es un Component
 
     constructor(leaf: WorkspaceLeaf, plugin: SpacedRepetitionPlugin) {
         super(leaf);
         this.plugin = plugin;
-        this.component = new Component();
+        // Eliminado: this.component = new Component();
+
+        // IMPLEMENTACIÓN DE SCOPE (Reemplaza al evento global keydown)
+        // El array vacío [] significa que no requiere modificadores (Ctrl/Shift)
+        this.scope.register([], '1', () => {
+            this.handleRating('again');
+            return false;
+        });
+        this.scope.register([], '2', () => {
+            this.handleRating('hard');
+            return false;
+        });
+        this.scope.register([], '3', () => {
+            this.handleRating('good');
+            return false;
+        });
+        this.scope.register([], '4', () => {
+            this.handleRating('easy');
+            return false;
+        });
+        this.scope.register([], ' ', () => {
+            this.handleSpacebar();
+            return false;
+        });
     }
 
     getViewType() {
@@ -43,7 +67,7 @@ export class SpacedRepetitionView extends ItemView {
     }
 
     getDisplayText() {
-        return 'Spaced Repetition';
+        return 'Spaced repetition'; // Sentence case
     }
 
     getIcon() {
@@ -55,7 +79,7 @@ export class SpacedRepetitionView extends ItemView {
     }
 
     async onClose() {
-        this.component.unload();
+        // Eliminado: this.component.unload(); // ItemView se descarga solo
     }
 
     private async renderView() {
@@ -90,7 +114,7 @@ export class SpacedRepetitionView extends ItemView {
     private async renderFilterView(container: HTMLElement) {
         const filterContainer = container.createDiv({ cls: 'sr-filter-view' });
 
-        filterContainer.createEl('h2', { text: 'Filter Review' });
+        filterContainer.createEl('h2', { text: 'Filter review' }); // Sentence case
 
         const allProperties = await this.getAllProperties();
 
@@ -136,7 +160,7 @@ export class SpacedRepetitionView extends ItemView {
             }
 
             new ButtonComponent(filterControls)
-                .setButtonText('Add Filter')
+                .setButtonText('Add filter') // Sentence case
                 .onClick(() => {
                     const property = propertyDropdown.getValue();
                     const value = valueDropdown.getValue();
@@ -151,7 +175,7 @@ export class SpacedRepetitionView extends ItemView {
 
         if (this.currentFilters.length > 0) {
             const filtersDisplay = filterContainer.createDiv({ cls: 'sr-current-filters' });
-            filtersDisplay.createEl('h3', { text: 'Current Filters:' });
+            filtersDisplay.createEl('h3', { text: 'Current filters:' }); // Sentence case
 
             this.currentFilters.forEach((filter, index) => {
                 const filterItem = filtersDisplay.createDiv({ cls: 'sr-filter-item' });
@@ -221,21 +245,21 @@ export class SpacedRepetitionView extends ItemView {
         const actions = filterContainer.createDiv({ cls: 'sr-actions' });
 
         new ButtonComponent(actions)
-            .setButtonText('Apply Filters')
+            .setButtonText('Apply filters') // Sentence case
             .setCta()
             .onClick(async () => {
                 await this.applyFilters();
             });
 
         new ButtonComponent(actions)
-            .setButtonText('Clear Filters')
+            .setButtonText('Clear filters') // Sentence case
             .onClick(() => {
                 this.currentFilters = [];
                 this.renderView();
             });
 
         const startBtn = new ButtonComponent(actions)
-            .setButtonText('Start Review')
+            .setButtonText('Start review') // Sentence case
             .setCta()
             .onClick(async () => {
                 await this.startReview();
@@ -275,7 +299,7 @@ export class SpacedRepetitionView extends ItemView {
         const buttonsContainer = questionContainer.createDiv({ cls: 'sr-buttons' });
 
         new ButtonComponent(buttonsContainer)
-            .setButtonText('Show Answer')
+            .setButtonText('Show answer') // Sentence case
             .setCta()
             .onClick(() => {
                 this.currentState = 'answer';
@@ -283,7 +307,7 @@ export class SpacedRepetitionView extends ItemView {
             });
 
         new ButtonComponent(buttonsContainer)
-            .setButtonText('Open File')
+            .setButtonText('Open file') // Sentence case
             .setIcon('external-link')
             .onClick(async () => {
                 await this.app.workspace.getLeaf('tab').openFile(file);
@@ -326,11 +350,15 @@ export class SpacedRepetitionView extends ItemView {
         const contentContainer = answerContainer.createDiv({ cls: 'sr-content' });
 
         const content = await this.app.vault.read(file);
-        await MarkdownRenderer.renderMarkdown(
+        
+        // CORREGIDO: Uso de MarkdownRenderer.render en vez de renderMarkdown (deprecado)
+        // Se usa 'this' en lugar de 'this.component'
+        await MarkdownRenderer.render(
+            this.app,
             content,
             contentContainer,
             file.path,
-            this.component
+            this
         );
 
         const ratingContainer = answerContainer.createDiv({ cls: 'sr-rating-buttons' });
@@ -361,7 +389,7 @@ export class SpacedRepetitionView extends ItemView {
 
         const actionsContainer = answerContainer.createDiv({ cls: 'sr-actions' });
         new ButtonComponent(actionsContainer)
-            .setButtonText('Open File')
+            .setButtonText('Open file') // Sentence case
             .setIcon('external-link')
             .onClick(async () => {
                 await this.app.workspace.getLeaf('tab').openFile(file);
@@ -387,7 +415,7 @@ export class SpacedRepetitionView extends ItemView {
 
         const actionsContainer = emptyContainer.createDiv({ cls: 'sr-actions' });
         new ButtonComponent(actionsContainer)
-            .setButtonText('Back to Filters')
+            .setButtonText('Back to filters') // Sentence case
             .setCta()
             .onClick(() => {
                 this.currentState = 'filter';
@@ -396,6 +424,8 @@ export class SpacedRepetitionView extends ItemView {
             });
     }
 
+    // El resto de la clase (métodos lógicos) no requirió cambios, pero lo incluyo para que tengas el archivo completo si lo prefieres copiar entero.
+    
     public async handleRating(rating: 'again' | 'hard' | 'good' | 'easy') {
         if (this.currentState !== 'answer') {
             return;
