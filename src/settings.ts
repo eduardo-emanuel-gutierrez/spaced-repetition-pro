@@ -142,7 +142,7 @@ export class SpacedRepetitionSettingTab extends PluginSettingTab {
         docsLink.createEl('span', { text: 'For more information, visit the ' });
         docsLink.createEl('a', {
             text: 'plugin documentation',
-            href: 'https://github.com/yourusername/obsidian-spaced-repetition-pro'
+            href: 'https://github.com/eduardo-emanuel-gutierrez/spaced-repetition-pro'
         });
     }
 }
