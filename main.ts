@@ -14,7 +14,6 @@ import { SpacedRepetitionSettingTab, SpacedRepetitionSettings, DEFAULT_SETTINGS 
 export default class SpacedRepetitionPlugin extends Plugin {
     settings: SpacedRepetitionSettings;
     srManager: SpacedRepetitionManager;
-    private saveInterval: number;
 
     async onload() {
         await this.loadSettings();
@@ -27,7 +26,7 @@ export default class SpacedRepetitionPlugin extends Plugin {
             (leaf) => new SpacedRepetitionView(leaf, this)
         );
 
-        this.saveInterval = this.registerInterval(
+        this.registerInterval(
             window.setInterval(() => {
                 this.srManager.saveData().catch(error => {
                     console.error('Error in automatic save:', error);
@@ -37,7 +36,7 @@ export default class SpacedRepetitionPlugin extends Plugin {
 
         this.addCommand({
             id: 'start-review-session',
-            name: 'Start Review Session',
+            name: 'Start review session',
             callback: () => {
                 this.activateView();
             }
@@ -49,33 +48,6 @@ export default class SpacedRepetitionPlugin extends Plugin {
             })
         );
 
-        this.registerDomEvent(document, 'keydown', (evt: KeyboardEvent) => {
-            const activeView = this.app.workspace.getActiveViewOfType(SpacedRepetitionView);
-            if (activeView) {
-                switch(evt.key) {
-                    case '1':
-                        activeView.handleRating('again');
-                        evt.preventDefault();
-                        break;
-                    case '2':
-                        activeView.handleRating('hard');
-                        evt.preventDefault();
-                        break;
-                    case '3':
-                        activeView.handleRating('good');
-                        evt.preventDefault();
-                        break;
-                    case '4':
-                        activeView.handleRating('easy');
-                        evt.preventDefault();
-                        break;
-                    case ' ':
-                        activeView.handleSpacebar();
-                        evt.preventDefault();
-                        break;
-                }
-            }
-        });
 
         this.registerEvent(
             this.app.vault.on('rename', async (file, oldPath) => {
@@ -106,9 +78,7 @@ export default class SpacedRepetitionPlugin extends Plugin {
     }
 
     async onunload() {
-        if (this.saveInterval) {
-            window.clearInterval(this.saveInterval);
-        }
+
 
         if (this.srManager) {
             try {
@@ -147,7 +117,7 @@ export default class SpacedRepetitionPlugin extends Plugin {
     private addContextMenu(menu: Menu, file: TFile | TFolder) {
         menu.addItem((item: MenuItem) => {
             item
-                .setTitle('Track for Review')
+                .setTitle('Track for review')
                 .setIcon('clock')
                 .onClick(async () => {
                     await this.trackItems(file);
@@ -156,7 +126,7 @@ export default class SpacedRepetitionPlugin extends Plugin {
 
         menu.addItem((item: MenuItem) => {
             item
-                .setTitle('Untrack from Review')
+                .setTitle('Untrack from review') 
                 .setIcon('x')
                 .onClick(async () => {
                     await this.untrackItems(file);
