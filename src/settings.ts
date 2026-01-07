@@ -24,7 +24,6 @@ export class SpacedRepetitionSettingTab extends PluginSettingTab {
 
         containerEl.empty();
 
-        containerEl.createEl('h2', { text: 'Spaced Repetition Pro Settings' });
 
         containerEl.createEl('p', {
             text: 'Configure your spaced repetition learning preferences.',
@@ -71,7 +70,10 @@ export class SpacedRepetitionSettingTab extends PluginSettingTab {
                     }
                 }));
 
-        containerEl.createEl('h3', { text: 'Statistics' });
+        
+        new Setting(containerEl)
+            .setName('Statistics')
+            .setHeading();
 
         const statsContainer = containerEl.createDiv({ cls: 'sr-stats-container' });
 
@@ -97,7 +99,10 @@ export class SpacedRepetitionSettingTab extends PluginSettingTab {
             .setName('Review notes')
             .setDesc(`${stats.review} notes are in the long-term review phase`);
 
-        containerEl.createEl('h3', { text: 'Maintenance' });
+        
+        new Setting(containerEl)
+            .setName('Maintenance')
+            .setHeading();
 
         new Setting(containerEl)
             .setName('Clean up deleted notes')
@@ -114,7 +119,10 @@ export class SpacedRepetitionSettingTab extends PluginSettingTab {
                     }
                 }));
 
-        containerEl.createEl('h3', { text: 'Keyboard Shortcuts' });
+        
+        new Setting(containerEl)
+            .setName('Keyboard shortcuts')
+            .setHeading();
 
         const shortcutsInfo = containerEl.createDiv({ cls: 'sr-shortcuts-info' });
         shortcutsInfo.createEl('p', { text: 'During review sessions, you can use these shortcuts:' });
@@ -126,7 +134,10 @@ export class SpacedRepetitionSettingTab extends PluginSettingTab {
         shortcutsList.createEl('li', { text: '3 - Rate as "Good" (remembered with effort)' });
         shortcutsList.createEl('li', { text: '4 - Rate as "Easy" (remembered perfectly)' });
 
-        containerEl.createEl('h3', { text: 'About' });
+        
+        new Setting(containerEl)
+            .setName('About')
+            .setHeading();
 
         const aboutContainer = containerEl.createDiv({ cls: 'sr-about' });
 
