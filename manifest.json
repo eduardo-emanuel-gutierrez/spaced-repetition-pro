@@ -3,7 +3,7 @@
   "name": "Spaced Repetition Pro",
   "version": "1.0.0",
   "minAppVersion": "0.15.0",
-  "description": "Advanced spaced repetition system for Obsidian using the SM-2 algorithm. Track and review your notes efficiently.",
+  "description": "Advanced spaced repetition system using the SM-2 algorithm.",
   "author": "Gutierrez Eduardo",
   "authorUrl": "https://github.com/eduardo-emanuel-gutierrez",
   "isDesktopOnly": false
